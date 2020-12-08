@@ -27,8 +27,8 @@ while True:
 		if comand == 'Да':
 			calculate()
 			continue
-		if comand == 'Нет':
+		elif comand == 'Нет':
 			print("Выходим из проиложения")
 			break
-else:
-		print("Не верная команда")
+		else:
+			print("Не верная команда")
