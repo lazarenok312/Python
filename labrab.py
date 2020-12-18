@@ -1,3 +1,4 @@
+#Лазарев Дмитрий
 from abc import ABC, abstractmethod
 import math
 import random
@@ -47,7 +48,7 @@ d8 = random.uniform(1, 16)
 d20 = random.uniform(1, 20)
 d10 = math.floor(d20)
 
-max_hp = 10 + constitution + 1d10 * level
+max_hp = 10 + constitution + d10 * level
 hp = max_hp
 armour_class = 15 + dexterity
-initiative = 1d20 + dexterity
+initiative = d20 + dexterity
