@@ -6,7 +6,7 @@ data = ["id,username,email,ip_address",
         "3,test_user,test_user@example.com,192.168.0.3", 
         "4,second_user,second_user@example.com,192.168.0.4"]
 
-path = "C:\\Users\\lazar\\Desktop\\Homework\\data.csv"
+path = "data.csv"
 
 
 def csv_write(data, path):
