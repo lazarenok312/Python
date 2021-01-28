@@ -1,0 +1,43 @@
+{% extends 'blog/navbar.html' %}
+
+{% block page_header %}
+<h1>Заглавие: {{ post.title }}</h1>
+<div class='autor'>Автор сообщения:</div><div class='autor_s'>{{ post.user }}</div>
+<div class='date'>Дата публикации:</div><div class='pub_date'>{{post.pub_date|date:'M d, Y'}}</div>
+{% endblock page_header %}
+{% block content %}
+<h1>Текст:</h1>
+<div class='post'>{{ post.body }}</div></big></big>
+      <h3>Комментарии:</h3>
+      {% if comments %}
+          {% for comment in comments %}
+            <div class="card" style="width: 500px; margin-top: 20px;">
+              <div class="card-body">
+                <h5 class="card-title">{{ comment.user }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ comment.pub_date }}</h6>
+                <p class="card-text">{{ comment }}</p>
+              </div>
+            </div>
+          {% endfor %}
+      {% else %}
+      <p>Комментарии отсутствуют</p>
+      {% endif %}
+    </div>
+    <div>
+      <form action="{% url 'blog:create_comment' %}" method="post">
+        {% csrf_token %}
+        <div class='date'><h3>Оставить комментарий:</h3></div>
+        <div>
+          <input type=”text” placeholder="Ваше имя" size="32" style="width: 150; margin-bottom: 2px;">
+        </div>
+        <textarea placeholder="Комментарий" maxlength="100" cols="35" rows="3" style="resize: none;"></textarea>
+        <input type="submit" value="Оставить комментарий" class="btn btn-primary" style="display: block;">
+      </form>
+    </div>
+  </div>
+
+  {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+  {% endif %}
+  
+{% endblock %}
