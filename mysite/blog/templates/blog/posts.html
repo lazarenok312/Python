@@ -1,0 +1,22 @@
+{% extends 'blog/navbar.html' %}
+
+{% block page_header %}
+  <h1>Посты</h1>
+{% endblock page_header %}
+{% block content %}
+    {% for post in latest_post_list %}
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h4 class="card-header">
+          <div><a href="{% url 'blog:detail' post.id %}">{{ post }}</a></div> 
+          <div style="float: right;">{{ post.user }}: {{ post.pub_date|date:'M d, Y' }}</div>
+        </h4>
+        <div class="card-body">
+          {{ post.body|truncatechars:100 }}
+          <div style="margin-top: 20px;"><a class="btn btn-primary" href="{% url 'blog:detail' post.id %}" role="button">Информация</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
