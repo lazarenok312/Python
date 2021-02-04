@@ -1,0 +1,19 @@
+<div>
+	<h3><b>{{ object.user.username }}</b></h3>
+	<h1>{{ object.title }}</h1>
+	<p>{{ object.body }}</p>
+	<p><i>{{ object.pub_date }}</i></p>
+</div>
+
+<div>
+	{% for a in object.answer_set.all %}
+		<div>
+			<h3>{{ a.user.username }}</h3>
+			<p>{{ a.body }}</p>
+			<p>{{ a.likes }} likes</p>
+			<p>{{ a.dislikes }} dislikes</p>
+			<p><b>{{ a.best_answer }}</b></p>
+			<p><i>{{ a.pub_date }}</i></p>
+		</div>
+	{% endfor %}
+</div>
