@@ -9,5 +9,8 @@ urlpatterns = [
 	path('question/<int:pk>/', views.UpdateQuestionView.as_view(), name='update_question'),
 	path('question/delete/<int:pk>/', views.DeleteQuestionView.as_view(), name='delete_question'),
 	path('question/new', views.CreateQuestionView.as_view(), name='new_question'),
-	path('users/register', views.RegisterView.as_view(), name='register')
+	path('users/register', views.RegisterView.as_view(), name='register'),
+	path('answers/create', views.CreateAnswer.as_view(), name='create_answer'),
+	path('answers/<int:answer_id>/liked', views.liked, name='liked'),
+	path('answers/<int:answer_id>/disliked', views.disliked, name='disliked')
 ]
