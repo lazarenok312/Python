@@ -5,10 +5,10 @@ from .models import Category, Subcategory, Product
 # Register your models here.
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['name', 'subcategory', 'price', 'description']}),
+        (None, {'fields': ['name', 'subcategory', 'price', 'description', 'image']}),
     ]
 
-    list_display = ('name', 'price', 'available', 'created', 'updated')
+    list_display = ('name', 'price', 'image', 'available', 'created', 'updated')
     list_filter = ['subcategory', 'price']
     list_editable = ['price', 'available']
     search_fields = ['subcategory', 'name', 'description']
