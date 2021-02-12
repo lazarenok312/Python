@@ -11,6 +11,9 @@ class UserQuestion(models.Model):
 	body = models.CharField(max_length=255)
 	pub_date = models.DateTimeField(default=timezone.now())
 
+	def __str__(self):
+		return self.title
+
 class Answer(models.Model):
 	question = models.ForeignKey(UserQuestion, on_delete=models.CASCADE)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,6 +22,14 @@ class Answer(models.Model):
 	likes = models.IntegerField(default=0)
 	dislikes = models.IntegerField(default=0)
 	best_answer = models.BooleanField(default=False)
+
+	class Meta:
+		ordering = ['pub_date']
+		verbose_name = "Ответ"
+		verbose_name_plural = "Ответы"
+
+	def __str__(self):
+		return 'Ответ {} от {} к вопросу {}'.format(self.body, self.user.username, self.question.title)
 
 class UserLikes(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
